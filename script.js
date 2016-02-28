@@ -71,4 +71,7 @@ function calc(val)  {
     	} 
 
 	result.innerHTML = cc;
+	var paste_tax = document.createElement("div");
+	paste_tax.innerHTML = val + " = " + cc;
+	document.body.appendChild(paste_tax);
 }
