@@ -33,11 +33,13 @@ function calc(val)  {
 
     var w = res; //bo w javascript wszystko liczy się od zera
     var e = (res + 1);
-
+    if (pier > 0) {
+    	e = res + 4;
+    }
     var x = val.substring(0,w);
-    x = parseInt(x, 10);
+    x = parseFloat(x);
     var y = val.substring(e);
-    y = parseInt(y, 10);
+    y = parseFloat(y);
 
     var all = 0
 
@@ -52,11 +54,21 @@ function calc(val)  {
     } else if (pot > 0) {
 	all = Math.pow(x,y);
     } else if (pier > 0) {
-	all = Math.sqrt(x)
+	all = Math.pow(x, 1/y);
     }
 
     var operation = document.getElementById("operation");
     operation.innerHTML = val + " = ";
     var result = document.getElementById("result");
-    result.innerHTML = all;
+    //result.innerHTML = all.toFixed(10);
+    
+    
+    
+    var cc = all.toFixed(10);
+    var tempcc = cc.split(".");
+    	if (parseInt(tempcc[1], 10) === 0) {
+    		cc = tempcc[0]
+    	} 
+
+	result.innerHTML = cc;
 }
